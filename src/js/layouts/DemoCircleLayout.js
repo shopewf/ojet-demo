@@ -1,4 +1,4 @@
-define(["require", "exports", "layouts/DemoLayoutSupport"], function (require, exports, support) {
+define(["require", "exports", "layouts/DemoCircleLayoutSupport"], function (require, exports, support) {
     "use strict";
     class DemoCircleLayout {
     }
