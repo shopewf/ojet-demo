@@ -8,11 +8,24 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['accUtils'],
- function(accUtils) {
+define(['accUtils', 'require', 'exports', 'knockout', 'text!data/diagramDataSample.json',
+        'ojs/ojarraydataprovider', 'ojs/ojattributegrouphandler', 'layouts/DemoCircleLayout'],
+ function(accUtils, require, exports, ko, data, ArrayDataProvider, ojattributegrouphandler, layout) {
     function DashboardViewModel() {
       // Below are a set of the ViewModel methods invoked by the oj-module component.
       // Please reference the oj-module jsDoc for additional information.
+
+      var self = this;
+
+      this.data = JSON.parse(data)
+      this.colorHandler = new ojattributegrouphandler.ColorAttributeGroupHandler();
+      this.layoutFunc = layout.circleLayoutWithLayoutArgs(150);
+      this.nodeDataProvider = new ArrayDataProvider(this.data.nodes, {
+        keyAttributes: "id",
+      });
+      this.linkDataProvider = new ArrayDataProvider(this.data.links, {
+        keyAttributes: "id",
+      });
 
       /**
        * Optional ViewModel method invoked after the View is inserted into the
