@@ -1,8 +1,8 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    class DemoCircleLayoutSupport {
+    class DemoLayoutSupport {
     }
-    DemoCircleLayoutSupport.getMaxNodeBounds = (layoutContext, excludeLabelBounds) => {
+    DemoLayoutSupport.getMaxNodeBounds = (layoutContext, excludeLabelBounds) => {
         const nodeCount = layoutContext.getNodeCount();
         let maxW = 0;
         let maxH = 0;
@@ -21,24 +21,24 @@ define(["require", "exports"], function (require, exports) {
         }
         return { x: 0, y: 0, w: maxW, h: maxH };
     };
-    DemoCircleLayoutSupport.centerNodeAndLabel = (layoutContext, node, x, y) => {
-        DemoCircleLayoutSupport.centerNode(node, x, y);
-        DemoCircleLayoutSupport.positionNodeLabel(layoutContext, node);
+    DemoLayoutSupport.centerNodeAndLabel = (layoutContext, node, x, y) => {
+        DemoLayoutSupport.centerNode(node, x, y);
+        DemoLayoutSupport.positionNodeLabel(layoutContext, node);
     };
-    DemoCircleLayoutSupport.centerNode = (node, x, y) => {
+    DemoLayoutSupport.centerNode = (node, x, y) => {
         const bounds = node.getContentBounds();
         node.setPosition({
             x: x - bounds.x - bounds.w * 0.5,
             y: y - bounds.y - bounds.h * 0.5,
         });
     };
-    DemoCircleLayoutSupport.positionNodeLabels = (layoutContext) => {
+    DemoLayoutSupport.positionNodeLabels = (layoutContext) => {
         for (let ni = 0; ni < layoutContext.getNodeCount(); ni++) {
             const node = layoutContext.getNodeByIndex(ni);
-            DemoCircleLayoutSupport.positionNodeLabel(layoutContext, node);
+            DemoLayoutSupport.positionNodeLabel(layoutContext, node);
         }
     };
-    DemoCircleLayoutSupport.positionNodeLabel = (layoutContext, node) => {
+    DemoLayoutSupport.positionNodeLabel = (layoutContext, node) => {
         const nodeBounds = node.getContentBounds();
         const nodePos = node.getPosition();
         const nodeLabelBounds = node.getLabelBounds();
@@ -50,7 +50,7 @@ define(["require", "exports"], function (require, exports) {
             node.setLabelHalign("center");
         }
     };
-    DemoCircleLayoutSupport.getNodeComparator = (attribute) => {
+    DemoLayoutSupport.getNodeComparator = (attribute) => {
         const comparator = (a, b) => {
             let valA = 0;
             let valB = 0;
@@ -70,10 +70,10 @@ define(["require", "exports"], function (require, exports) {
         };
         return comparator;
     };
-    DemoCircleLayoutSupport.layoutLinks = (layoutContext) => {
+    DemoLayoutSupport.layoutLinks = (layoutContext) => {
         for (let li = 0; li < layoutContext.getLinkCount(); li++) {
             let link = layoutContext.getLinkByIndex(li);
-            const endpoints = DemoCircleLayoutSupport.getEndpoints(layoutContext, link);
+            const endpoints = DemoLayoutSupport.getEndpoints(layoutContext, link);
             const startX = endpoints[0].x;
             const startY = endpoints[0].y;
             const endX = endpoints[1].x;
@@ -89,7 +89,7 @@ define(["require", "exports"], function (require, exports) {
             }
         }
     };
-    DemoCircleLayoutSupport.getEndpoints = (layoutContext, link) => {
+    DemoLayoutSupport.getEndpoints = (layoutContext, link) => {
         const layoutAttrs = link.getData();
         //support for laying out links to connect at the edges of node
         //bounding boxes instead of at the centers
@@ -112,8 +112,8 @@ define(["require", "exports"], function (require, exports) {
         if (bLinkToBounds) {
             b1 = { x: n1Position.x + b1.x, y: n1Position.y + b1.y, w: b1.w, h: b1.h };
             b2 = { x: n2Position.x + b2.x, y: n2Position.y + b2.y, w: b2.w, h: b2.h };
-            const startP = DemoCircleLayoutSupport._intersectRect(b1, startX, startY, endX, endY, link.getStartConnectorOffset());
-            const endP = DemoCircleLayoutSupport._intersectRect(b2, endX, endY, startX, startY, link.getEndConnectorOffset());
+            const startP = DemoLayoutSupport._intersectRect(b1, startX, startY, endX, endY, link.getStartConnectorOffset());
+            const endP = DemoLayoutSupport._intersectRect(b2, endX, endY, startX, startY, link.getEndConnectorOffset());
             startX = startP.x;
             startY = startP.y;
             endX = endP.x;
@@ -124,7 +124,7 @@ define(["require", "exports"], function (require, exports) {
         endpoints.push({ x: endX, y: endY });
         return endpoints;
     };
-    DemoCircleLayoutSupport._intersectRect = (rect, startX, startY, endX, endY, connOffset) => {
+    DemoLayoutSupport._intersectRect = (rect, startX, startY, endX, endY, connOffset) => {
         const SIDE_TOP = 0;
         const SIDE_RIGHT = 1;
         const SIDE_BOTTOM = 2;
@@ -187,5 +187,5 @@ define(["require", "exports"], function (require, exports) {
         }
         return { x: x, y: y };
     };
-    return DemoCircleLayoutSupport;
+    return DemoLayoutSupport;
 });
