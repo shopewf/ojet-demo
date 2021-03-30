@@ -5,35 +5,78 @@
  -->
 <div class="oj-hybrid-padding">
     <h1>Dashboard Content Area</h1>
-    <div id='diagram-container'>
-        <oj-diagram
-            id='diagram1'
-            zooming='auto'
-            panning='auto'
-            min-zoom='.5'
-            max-zoom='2'
-            node-data = '[[nodeDataProvider]]'
-            link-data = '[[linkDataProvider]]'
-            layout = '[[layoutFunc]]'>
-            <template slot='nodeTemplate' data-oj-as='node'>
-                <oj-diagram-node
-                        label='[[node.data.id]]'
-                        short-desc='[["Node " + node.data.id + ", Category " + node.data.category]]'
-                        icon.color='[[colorHandler.getValue(node.data.category)]]'
-                        icon.width='50'
-                        icon.height='50'>
-                </oj-diagram-node>
-            </template>
-            <template slot='linkTemplate' data-oj-as='link'>
-                <oj-diagram-link
-                        start-node='[[link.data.start]]'
-                        end-node='[[link.data.end]]'
-                        short-desc='[["Link " + link.data.id + ", Category " + link.data.category + ", connects " + link.data.start + " to " + link.data.end]]'
-                        color='[[colorHandler.getValue(link.data.category)]]'
-                        start-connector-type='none'
-                        end-connector-type='arrow'>
-                </oj-diagram-link>
-            </template>
-        </oj-diagram>
-    </div>
+    <body class="demo-disable-bg-image">
+        <div id="sampleDemo" style="" class="demo-padding demo-container">
+            <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                <div id='diagram-container'>
+                    <div class="oj-flex oj-sm-flex-items-1">
+                        <div class="oj-flex-item oj-sm-margin-1x-horizontal oj-panel oj-panel-border-radius-0 oj-sm-padding-0">
+                            <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Diagram A</div>
+                            <oj-diagram id='diagram1'
+                                        node-data = '[[nodeDataProvider1]]'
+                                        layout = '[[gridLayout]]'
+                                        dnd.drag.nodes.data-types = '["text/nodes1"]'
+                                        dnd.drop.background.data-types = '["text/nodes1", "text/nodes2"]'
+                                        dnd.drop.background.drop = '[[onDrop1]]'>
+                                <template slot='nodeTemplate' data-oj-as='node'>
+                                    <oj-diagram-node
+                                            label = '[[node.data.id]]'
+                                            short-desc='[["Node " + node.data.id + ", Category " + node.data.category]]'
+                                            icon.shape='[[node.data.category === "0" ? "square" : node.data.category === "1" ? "circle" : "human"]]'
+                                            icon.color='[[colorHandler.getValue(node.data.category)]]'
+                                            icon.width='40'
+                                            icon.height='40'>
+                                    </oj-diagram-node>
+                                </template>
+                                <template slot='linkTemplate' data-oj-as='link'>
+                                    <oj-diagram-link
+                                            start-node='[[link.data.startNode]]'
+                                            end-node='[[link.data.endNode]]'
+                                            short-desc='[["Link " + link.data.id + ", connects " + link.data.startNode + " to " + link.data.endNode]]'
+                                            width='3'>
+                                    </oj-diagram-link>
+                                </template>
+                            </oj-diagram>
+                        </div>
+                        <div class="oj-flex-item oj-sm-margin-1x-horizontal oj-panel oj-panel-border-radius-0 oj-sm-padding-0">
+                            <div class="oj-typography-heading-xs oj-sm-margin-2x-horizontal">Diagram B</div>
+                            <oj-diagram id='diagram2'
+                                        node-data = '[[nodeDataProvider2]]'
+                                        link-data = '[[linkDataProvider2]]'
+                                        layout = '[[dropLayout]]'
+                                        dnd.drag.nodes.data-types = '["text/nodes2"]'
+                                        dnd.drop.background.data-types = '["text/nodes1", "text/nodes2"]'
+                                        dnd.drop.background.drop = '[[onDrop2]]'
+                                        dnd.drop.nodes.data-types = '["text/nodes1", "text/nodes2"]'
+                                        dnd.drop.nodes.drop = '[[onDrop2]]'
+                                        dnd.drop.links.data-types = '["text/nodes1", "text/nodes2"]'
+                                        dnd.drop.links.drop = '[[onLinkDrop]]'
+                                        panning = 'auto'
+                                        min-zoom = '1'
+                                        max-zoom = '1'>
+                                <template slot='nodeTemplate' data-oj-as='node'>
+                                    <oj-diagram-node
+                                            label = '[[node.data.id]]'
+                                            short-desc='[["Node " + node.data.id + ", Category " + node.data.category]]'
+                                            icon.shape='[[node.data.category === "0" ? "square" : node.data.category === "1" ? "circle" : "human"]]'
+                                            icon.color='[[colorHandler.getValue(node.data.category)]]'
+                                            icon.width='40'
+                                            icon.height='40'>
+                                    </oj-diagram-node>
+                                </template>
+                                <template slot='linkTemplate' data-oj-as='link'>
+                                    <oj-diagram-link
+                                            start-node='[[link.data.startNode]]'
+                                            end-node='[[link.data.endNode]]'
+                                            short-desc='[["Link " + link.data.id + ", connects " + link.data.startNode + " to " + link.data.endNode]]'
+                                            width='3'>
+                                    </oj-diagram-link>
+                                </template>
+                            </oj-diagram>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </div>
