@@ -2,95 +2,82 @@
   "nodesA": [
     {
       "id": "A0",
-      "label": "A0",
+      "label": "VCN",
       "category": "0"
     },
     {
       "id": "A1",
-      "label": "A1",
-      "category": "1"
-    },
-    {
-      "id": "A2",
-      "label": "A2",
-      "category": "2"
-    },
-    {
-      "id": "A3",
-      "label": "A3",
+      "label": "Subnet",
       "category": "0"
     },
     {
+      "id": "A2",
+      "label": "Subnet",
+      "category": "0"
+    },
+    {
+      "id": "A3",
+      "label": "VNIC",
+      "category": "1"
+    },
+    {
       "id": "A4",
-      "label": "A4",
+      "label": "VNIC",
       "category": "1"
     },
     {
       "id": "A5",
-      "label": "A5",
-      "category": "2"
+      "label": "Secondary VNIC",
+      "category": "1"
     },
     {
       "id": "A6",
-      "label": "A6",
-      "category": "0"
+      "label": "Instance",
+      "category": "1"
     },
     {
       "id": "A7",
-      "label": "A7",
+      "label": "Instance",
       "category": "1"
     },
     {
       "id": "A8",
-      "label": "A8",
-      "category": "2"
-    },
-    {
-      "id": "A9",
-      "label": "A9",
-      "category": "0"
-    },
-    {
-      "id": "A10",
-      "label": "A10",
+      "label": "Volume Attachment",
       "category": "1"
     },
     {
+      "id": "A9",
+      "label": "Boot Volume",
+      "category": "2"
+    },
+    {
+      "id": "A10",
+      "label": "Boot Volume",
+      "category": "2"
+    },
+    {
       "id": "A11",
-      "label": "A11",
+      "label": "Block Volume",
+      "category": "2"
+    },
+    {
+      "id": "A12",
+      "label": "Volume Group",
+      "category": "2"
+    },
+    {
+      "id": "A13",
+      "label": "Boot Volume Backup",
+      "category": "2"
+    },
+    {
+      "id": "A14",
+      "label": "Volume Group Backup",
       "category": "2"
     }
   ],
   "nodesB": [
-    {
-      "id": "B0",
-      "category": "0",
-      "x": 15,
-      "y": 15
-    },
-    {
-      "id": "B1",
-      "category": "1",
-      "x": 85,
-      "y": 85
-    },
-    {
-      "id": "B2",
-      "category": "2",
-      "x": 155,
-      "y": 155
-    }
   ],
   "linksB": [
-    {
-      "id": "L0",
-      "startNode": "B0",
-      "endNode": "B1"
-    },
-    {
-      "id": "L1",
-      "startNode": "B1",
-      "endNode": "B2"
-    }
   ]
 }

@@ -30,7 +30,7 @@ define(["require", "exports", "layouts/DemoLayoutSupport"], function (require, e
             const nodeCount = layoutContext.getNodeCount();
             const linkCount = layoutContext.getLinkCount();
             const size = Math.floor(Math.sqrt(nodeCount));
-            const padding = linkCount > 0 ? nodeSize : 0.25 * nodeSize;
+            const padding = linkCount > 0 ? nodeSize : 0.01 * nodeSize;
             const space = nodeSize + padding;
             if (rows) {
                 cols = Math.floor(nodeCount / rows);

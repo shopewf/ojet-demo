@@ -87,7 +87,7 @@ define(['accUtils', 'require', 'exports', 'knockout', 'text!data/dndDataSample.j
         const nodePos = node["getPosition"]();
         const labelLayout = {
           x: nodeBounds.x + nodePos.x + 0.5 * nodeBounds.w,
-          y: nodeBounds.y + nodePos.y + 0.5 * nodeBounds.h,
+          y: nodeBounds.y + nodePos.y + 1.2 * nodeBounds.h,
           halign: "center",
           valign: "middle",
         };
